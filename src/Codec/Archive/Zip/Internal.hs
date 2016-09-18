@@ -214,6 +214,7 @@ data FileHeader = FileHeader
     , fhExternalFileAttributes :: Word32
     , fhRelativeOffset         :: Word32
     , fhFileName               :: FilePath
+    , fhFileNameBS             :: ByteString
     , fhExtraField             :: ByteString
     , fhFileComment            :: ByteString
     } deriving (Show)
@@ -264,6 +265,7 @@ getFileHeader = do
                , fhExternalFileAttributes = externalFileAttributes
                , fhRelativeOffset         = relativeOffset
                , fhFileName               = toString fileName
+               , fhFileNameBS             = fileName
                , fhExtraField             = extraField
                , fhFileComment            = fileComment
                }

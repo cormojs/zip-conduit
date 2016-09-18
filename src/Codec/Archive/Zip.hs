@@ -81,6 +81,7 @@ module Codec.Archive.Zip
     , getComment
     , setComment
     , entryNames
+    , entryNamesBS
 
     -- * Conduit interface
     , sourceEntry
@@ -171,6 +172,9 @@ emptyZip f = Zip { zipFilePath               = f
 -- Operations
 entryNames :: Archive [FilePath]
 entryNames = gets $ map fhFileName . zipFileHeaders
+
+entryNamesBS :: Archive [ByteString]
+entryNamesBS = gets $ map fhFileNameBS . zipFileHeaders
 
 
 getComment :: Archive ByteString
